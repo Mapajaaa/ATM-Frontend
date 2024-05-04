@@ -3,9 +3,11 @@ import { AuthContext } from '../AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 export default function Dashboard() {
+  const apiUrl = process.env.REACT_APP_API_URL
   const [rekening, setRekening] = useState([]);
   const history = useNavigate();
-  const { isUserAuthenticated, idU, logoutU } = React.useContext(AuthContext);
+  const { isUserAuthenticated,idU ,logoutU } = React.useContext(AuthContext);
+  console.log(idU);
 
   if (!isUserAuthenticated) {
     history('/login-user');
@@ -14,7 +16,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/rekening'); // Endpoint API Express
+        const response = await fetch(`${apiUrl}/rekening`);
         if (!response.ok) {
           throw new Error('Gagal mendapatkan data rekening');
         }
@@ -26,6 +28,8 @@ export default function Dashboard() {
       }
     };
     fetchData();
+    console.log(apiUrl);
+    console.log('p');
   }, []);
 
   return (
@@ -35,7 +39,6 @@ export default function Dashboard() {
           <div class="container">
             <a class="navbar-brand" >Dashboard User</a>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
               <li class="nav-item">
                 <a class="btn bg-white text-primary ms-4 hover:bg-sky-900" onClick={logoutU}>Sign Out</a>
               </li>
@@ -69,8 +72,6 @@ export default function Dashboard() {
             </ul>
           </div>
         </nav>
-
-
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
           <div class="list-form py-5">

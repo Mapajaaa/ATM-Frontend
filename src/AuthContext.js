@@ -21,10 +21,10 @@ export const AuthProvider = ({ children }) => {
       setIsCustAuthenticated(true);
     }
     if (userId) {
-      setIdU(parseInt(userId, 10));
+      setIdU(userId);
     }
     if (custId) {
-      setIdC(parseInt(custId, 10));
+      setIdC(idC);
     }
   }, []);
 

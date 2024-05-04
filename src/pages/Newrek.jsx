@@ -3,6 +3,7 @@ import { AuthContext } from '../AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 export default function Newrek() {
+    const apiUrl = process.env.REACT_APP_API_URL
     const [Pemilik, setPemilik] = useState('');
     const [Pin, setPassword] = useState('');
     const [NamaBank, setBank] = useState('');
@@ -23,7 +24,7 @@ export default function Newrek() {
             return
         }
         try {
-            const response = await fetch('http://localhost:3000/rekeningbaru', {
+            const response = await fetch(`${apiUrl}/rekeningbaru`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

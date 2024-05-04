@@ -7,6 +7,7 @@ import DashboardU from './pages/Dashboard';
 import DashboardC from './pages/customer/Dashboard';
 import NotFound from './pages/NotFound';
 import Newrek from './pages/Newrek';
+import Transfer from './pages/customer/Transfer';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/dashboard-user" element={<DashboardU />} />
           <Route path="/dashboard" element={<DashboardC />} />
           <Route path="/dashboard-user/create" element={<Newrek />} />
+          <Route path="/transfer" element={<Transfer />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'; // Import useHistory from React 
 import { AuthContext } from '../AuthContext';
 
 export default function Login() {
+   const apiUrl = process.env.REACT_APP_API_URL
    const [username, setUsername] = useState('');
    const [password, setPassword] = useState('');
    const [error, setError] = useState('');
@@ -12,7 +13,7 @@ export default function Login() {
    const handleLogin = async (e) => {
       e.preventDefault();
       try {
-         const response = await fetch('http://localhost:3000/login/user', {
+         const response = await fetch(`${apiUrl}/login/user`, {
             method: 'POST',
             headers: {
                'Content-Type': 'application/json',
@@ -24,7 +25,7 @@ export default function Login() {
             throw new Error(data.error || 'Username atau Password salah');
          }
 
-         setIdU(data.id);
+         setIdU(data);
          setError('');
          loginU();
          history('/dashboard-user'); 

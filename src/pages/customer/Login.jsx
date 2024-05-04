@@ -3,16 +3,17 @@ import { useNavigate } from 'react-router-dom'; // Import useHistory from React 
 import { AuthContext } from '../../AuthContext';
 
 export default function Login() {
+   const apiUrl = process.env.REACT_APP_API_URL
    const [NoKartu, setUsername] = useState('');
    const [Pin, setPassword] = useState('');
    const [error, setError] = useState('');
    const history = useNavigate(); // Initialize useHistory
-   const { loginC } = React.useContext(AuthContext);
+   const { loginC, setIdC } = React.useContext(AuthContext);
 
    const handleLogin = async (e) => {
       e.preventDefault();
       try {
-         const response = await fetch('http://localhost:3000/login/customer', {
+         const response = await fetch(`${apiUrl}/login/customer`, {
             method: 'POST',
             headers: {
                'Content-Type': 'application/json',
@@ -24,6 +25,7 @@ export default function Login() {
             throw new Error(data.error || 'NoKartu atau Pin salah');
          }
          setError('');
+         setIdC(data);
          loginC();
          history('/dashboard'); // Navigate to /dashboard after successful login
       } catch (error) {
