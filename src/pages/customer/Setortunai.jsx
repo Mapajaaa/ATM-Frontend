@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { AuthContext } from '../../AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-export default function Tariktunai() {
+export default function Setortunai() {
     const apiUrl = process.env.REACT_APP_API_URL
     const { isCustAuthenticated, idC } = React.useContext(AuthContext);
     const [NoRekTujuan, setNorek] = useState('');
@@ -23,7 +23,7 @@ export default function Tariktunai() {
         e.preventDefault();
 
         try {
-            const response = await fetch(`${apiUrl}/tarik-tunai`, {
+            const response = await fetch(`${apiUrl}/setor-tunai`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ export default function Tariktunai() {
                 throw new Error(data.error || 'Terjadi kesalahan saat transfer');
             }
 
-            alert('Tarik Tunai Berhasil')
+            alert('Setor Tunai Berhasil')
             history('/dashboard')
             console.log(data);
         } catch (error) {
@@ -116,7 +116,7 @@ export default function Tariktunai() {
                 <div className='bg-blue-700 w-screen h-1/2 rounded-3xl rounded-t-none'>
                     <div className='p-4 font-extrabold text-4xl text-white justify-between flex'>
                         <div>
-                            Tarik Tunai
+                            Setor Tunai
                         </div>
                         <div className='font-medium right-10 text-xl absolute z-10'>
                             <button onClick={back}>Back</button>
@@ -139,9 +139,9 @@ export default function Tariktunai() {
                             </div>
                         </div>
                         {Nominal? (
-                            <button type="button" className="btn w-100 text-2xl text-white" onClick={gotopin}> <div className='text-2xl font-bold'>Tarik</div></button>
+                            <button type="button" className="btn w-100 text-2xl text-white" onClick={gotopin}> <div className='text-2xl font-bold'>Setor</div></button>
                         ) : (
-                            <div className='text-2xl font-bold text-center w-100 text-gray-400 mt-2'>Tarik</div>
+                            <div className='text-2xl font-bold text-center w-100 text-gray-400 mt-2'>Setor</div>
                         )}
                         {masukanpin ? (
                             <div className='absolute bg-transparent h-[99vh] w-screen self-center -translate-y-24 justify-center backdrop-blur-xl flex' >

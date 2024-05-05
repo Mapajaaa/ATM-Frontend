@@ -42,6 +42,9 @@ export default function Dashboard() {
     function tarik() {
         history('/tarik');
     }
+    function setor() {
+        history('/setor');
+    }
     return (
         <div className='flex'>
             <div className='h-screen'>
@@ -73,7 +76,7 @@ export default function Dashboard() {
                         <button onClick={tarik}>Tarik Tunai</button>
                         </div>
                         <div className='bg-blue-900 p-3 rounded-lg font-bold cursor-pointer'>
-                            Setor Tunai
+                            <button onClick={setor}>Setor Tunai</button>
                         </div>
                     </div>
                 </div>

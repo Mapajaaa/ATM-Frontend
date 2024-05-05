@@ -9,6 +9,7 @@ import NotFound from './pages/NotFound';
 import Newrek from './pages/Newrek';
 import Transfer from './pages/customer/Transfer';
 import Tariktunai from './pages/customer/Tariktunai';
+import Setortunai from './pages/customer/Setortunai';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/dashboard-user/create" element={<Newrek />} />
           <Route path="/transfer" element={<Transfer />} />
           <Route path="/tarik" element={<Tariktunai />} />
+          <Route path="/setor" element={<Setortunai />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
