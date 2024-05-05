@@ -8,6 +8,7 @@ import DashboardC from './pages/customer/Dashboard';
 import NotFound from './pages/NotFound';
 import Newrek from './pages/Newrek';
 import Transfer from './pages/customer/Transfer';
+import Tariktunai from './pages/customer/Tariktunai';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/dashboard" element={<DashboardC />} />
           <Route path="/dashboard-user/create" element={<Newrek />} />
           <Route path="/transfer" element={<Transfer />} />
+          <Route path="/tarik" element={<Tariktunai />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
