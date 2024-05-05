@@ -26,6 +26,8 @@ export default function Login() {
          }
          setError('');
          setIdC(data);
+         var stringData = JSON.stringify(data)
+         localStorage.setItem('idC', stringData);
          loginC();
          history('/dashboard'); // Navigate to /dashboard after successful login
       } catch (error) {

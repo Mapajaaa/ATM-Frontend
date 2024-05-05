@@ -5,14 +5,16 @@ export const AuthContext = React.createContext();
 export const AuthProvider = ({ children }) => {
   const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
   const [isCustAuthenticated, setIsCustAuthenticated] = useState(false);
-  const [idU, setIdU] = useState(0);
-  const [idC, setIdC] = useState(0);
+  const [idU, setIdU] = useState({});
+  const [idC, setIdC] = useState({});
 
   useEffect(() => {
     const userAuth = localStorage.getItem('isUserAuthenticated');
     const custAuth = localStorage.getItem('isCustAuthenticated');
     const userId = localStorage.getItem('idU');
     const custId = localStorage.getItem('idC');
+    var dataU = JSON.parse(userId)
+    var dataC = JSON.parse(custId)
 
     if (userAuth) {
       setIsUserAuthenticated(true);
@@ -21,10 +23,10 @@ export const AuthProvider = ({ children }) => {
       setIsCustAuthenticated(true);
     }
     if (userId) {
-      setIdU(userId);
+      setIdU(dataU);
     }
     if (custId) {
-      setIdC(idC);
+      setIdC(dataC);
     }
   }, []);
 
