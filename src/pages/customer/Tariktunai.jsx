@@ -5,10 +5,8 @@ import { useNavigate } from 'react-router-dom';
 export default function Tariktunai() {
     const apiUrl = process.env.REACT_APP_API_URL
     const { isCustAuthenticated, idC } = React.useContext(AuthContext);
-    const [NoRekTujuan, setNorek] = useState('');
     const [Nominal, setNominal] = useState('');
     const [masukanpin, setMasukanPin] = useState(false);
-    const [valid, setValid] = useState(false);
     const [pin, setPin] = useState([]);
     const [error, setError] = useState('');
     const [Pin, setPinString] = useState('')
@@ -18,7 +16,6 @@ export default function Tariktunai() {
         history('/login');
     }
 
-    const DariRekId = idC.ID
     const handleTransfer = async (e) => {
         e.preventDefault();
 
@@ -73,41 +70,8 @@ export default function Tariktunai() {
         setPinString(pinString);
     }
 
-    function handleNorekChange(e) {
-        const { value } = e.target;
-        setNorek(value);
-
-        setValid(false)
-        if (value.trim() !== '' && value.length === 6) {
-            document.getElementById('nominal').focus();
-        }
-    }
-
     function back() {
         history('/dashboard')
-    }
-
-    const cekNorek = async (e) => {
-        e.preventDefault()
-        try {
-            const response = await fetch(`${apiUrl}/tarik-tunai`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ RekeningId: idC.ID, Nominal: Nominal, Pin }), // Kirim PIN sebagai bagian dari data JSON
-            });
-            const datas = await response.json();
-            if (!response.ok) {
-                throw new Error(datas.error || 'Username atau Password salah');
-             }
-            setError('')
-            setValid(true)
-        } catch (Error) {
-            setValid(false)
-            console.error(Error);
-            setError(Error.message);
-        }
     }
 
     return (

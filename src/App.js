@@ -1,5 +1,5 @@
 // Import necessary modules
-import { BrowserRouter as Router, Routes, Route, redirect, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './AuthContext';
 import LoginU from './pages/Login';
 import LoginC from './pages/customer/Login';

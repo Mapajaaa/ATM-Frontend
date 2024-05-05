@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { AuthContext } from '../AuthContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,7 +11,7 @@ export default function Newrek() {
     const [error, setError] = useState('');
     const [rekening, setRekening] = useState([]);
     const history = useNavigate();
-    const { isUserAuthenticated, idU, logoutU } = React.useContext(AuthContext);
+    const { isUserAuthenticated, logoutU } = React.useContext(AuthContext);
 
     if (!isUserAuthenticated) {
         history('/login-user');
@@ -56,7 +56,7 @@ export default function Newrek() {
             <div class="row ">
                 <nav class="navbar navbar-expand-lg sticky-top bg-primary navbar-dark">
                     <div class="container">
-                        <a class="navbar-brand" >Dashboard User</a>
+                        <a class="navbar-brand" href='#'>Dashboard User</a>
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
                             <li class="nav-item">
